@@ -6,7 +6,7 @@
 
 - 해당 cluster에 접속할 수 있다.
 
-  `kubectl get version`
+  `kubectl version`
 
 
 
