@@ -192,9 +192,17 @@ TEST(areTheySameAfterSorting, mergeSort) {
 
 
 
+시간복잡도는 O(NlogN)이나, 요소의 크기만큼 공간이 필요하다. 복사에 따른 오버헤드도 존재한다. 안정 정렬이다.
+
+
+
 #### 퀵 정렬
 
 ---
+
+말그대로 빠른 정렬이다. 하나의 pivot을 선택해서 그 기준에 대하여 정렬한 뒤, pivot을 선택한 위치와 정렬했던 마지막 위치를 교환한다.
+
+해당 작업을 계속해서 반복한다.
 
 
 
@@ -236,3 +244,6 @@ TEST(areTheySameAfterSorting, quickSort) {
 }
 ```
 
+
+
+시간복잡도는 O(nlogN)이고, 병합 정렬보다 빠른 정렬이다. 그러나 불안정 정렬이다.
