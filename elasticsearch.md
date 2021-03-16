@@ -1,4 +1,4 @@
-# Elastic Search
+# Elastic Search (v7.8)
 
 
 
@@ -125,3 +125,92 @@ GET /bank/_search
 `hits.sort`
 
 `hits._score`
+
+
+
+##### Query DSL
+
+---
+
+Query 도메인 특화 언어의 경우 아래와 같이 질의가 가능하다.
+
+
+
+```console
+GET /_search
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "title":   "Search"        }},
+        { "match": { "content": "Elasticsearch" }}
+      ],
+      "filter": [ 
+        { "term":  { "status": "published" }},
+        { "range": { "publish_date": { "gte": "2015-01-01" }}}
+      ]
+    }
+  }
+}
+```
+
+
+
+#### Compound queries
+
+---
+
+- Bolean
+
+  `bool`: query절을 여러 절로 묶을 수 있음, `must`, `should`, `must_not`, `filter`의 절이 있음. `must`, `should` 절은 점수를 조합함, `must_not`, `filter`의 경우에는 배제함
+
+  `boosting`: match된 문서의 점수 계산 방식을 배가함. `positive` query면 +, `negative` query면 -
+
+  `constant_score`
+
+  `dis_max`
+
+  `function_score`
+
+
+
+- Boosting
+
+  ```console
+  GET /_search
+  {
+    "query": {
+      "boosting": {
+        "positive": {
+          "term": {
+            "text": "apple"
+          }
+        },
+        "negative": {
+          "term": {
+            "text": "pie tart fruit crumble tree"
+          }
+        },
+        "negative_boost": 0.5 // 0.5 정도 -
+      }
+    }
+  }
+  ```
+
+  
+
+
+
+##### Mapping
+
+---
+
+
+
+##### Text analysis
+
+---
+
+
+
+##### 
