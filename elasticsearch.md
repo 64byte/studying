@@ -207,10 +207,62 @@ GET /_search
 
 
 
+- 
+
+
+
 ##### Text analysis
 
 ---
 
 
 
-##### 
+##### Aggregations
+
+---
+
+
+
+structuring aggregations
+
+```js
+"aggregations" : {
+    "<aggregation_name>" : {
+        "<aggregation_type>" : {
+            <aggregation_body>
+        }
+        [,"meta" : {  [<meta_data_body>] } ]?
+        [,"aggregations" : { [<sub_aggregation>]+ } ]?
+    }
+    [,"<aggregation_name_2>" : { ... } ]*
+}
+```
+
+
+
+`aggregations`를 `aggs`로 축약하여 사용할 수 있음.
+
+```json
+"aggs": {
+	"avg_price": {
+		"avg": {
+			"field": "total_quantity"	
+		}
+	}
+}
+```
+
+
+
+응답값은 아래와 같음.
+
+```json
+...
+  "aggregations" : {
+    "avg_price" : {
+      "value" : 2.1585026737967916
+    }
+  }
+}
+```
+
