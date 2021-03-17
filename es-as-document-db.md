@@ -60,33 +60,41 @@ GET /some-domain/entity1
 
 
 
-##### Create
+##### CREATE
 
 ```http
 PUT /some-domain/
+{
+
+}
 ```
 
 
 
-##### Retrieve
+##### READ
 
 ```
-PUT /some-domain/
-```
-
-
-
-##### Update
-
-```
-
+GET /some-domain/_search
+{
+	"query": {
+		"match_all": {
+		}
+	}
+}
 ```
 
 
 
-##### Delete
+##### UPDATE
+
+```
+
+```
+
+
+
+##### DELETE
 
 ```http
 DELETE /some-domain/_doc/1
 ```
-
